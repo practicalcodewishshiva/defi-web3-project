@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 8%;
+    --foreground: 45 100% 90%;
+
+    --card: 222 47% 12%;
+    --card-foreground: 45 100% 90%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 45 100% 90%;
+
+    --primary: 45 100% 50%;
+    --primary-foreground: 222 47% 8%;
+
+    --secondary: 210 60% 40%;
+    --secondary-foreground: 45 100% 90%;
+
+    --muted: 222 30% 20%;
+    --muted-foreground: 220 20% 60%;
+
+    --accent: 45 80% 60%;
+    --accent-foreground: 222 47% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 45 50% 30%;
+    --input: 222 30% 18%;
+    --ring: 45 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom game tokens */
+    --gold: 45 100% 50%;
+    --gold-light: 45 100% 70%;
+    --gold-dark: 45 80% 35%;
+    --navy: 222 47% 8%;
+    --navy-light: 222 40% 15%;
+    --navy-lighter: 222 35% 22%;
+    --cyan-glow: 190 100% 50%;
+    --magic-purple: 280 70% 50%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 50%), hsl(35 100% 40%));
+    --gradient-navy: linear-gradient(180deg, hsl(222 47% 12%), hsl(222 47% 6%));
+    --gradient-card: linear-gradient(145deg, hsl(222 40% 15%), hsl(222 47% 10%));
+    --gradient-glow: linear-gradient(180deg, hsl(45 100% 50% / 0.2), transparent);
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 45 100% 90%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image: 
+      radial-gradient(ellipse at top, hsl(var(--navy-light)) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, hsl(var(--secondary) / 0.1) 0%, transparent 40%);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .gold-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--gold) / 0.3),
+      0 0 40px hsl(var(--gold) / 0.1),
+      inset 0 1px 0 hsl(var(--gold-light) / 0.3);
+  }
+
+  .gold-glow-intense {
+    box-shadow: 
+      0 0 30px hsl(var(--gold) / 0.5),
+      0 0 60px hsl(var(--gold) / 0.2),
+      inset 0 1px 0 hsl(var(--gold-light) / 0.5);
+  }
+
+  .cyan-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--cyan-glow) / 0.4),
+      0 0 40px hsl(var(--cyan-glow) / 0.2);
+  }
+
+  .card-fantasy {
+    background: linear-gradient(145deg, hsl(var(--navy-light)), hsl(var(--navy)));
+    border: 1px solid hsl(var(--gold-dark) / 0.5);
+    box-shadow: 
+      0 4px 20px hsl(var(--navy) / 0.8),
+      inset 0 1px 0 hsl(var(--gold) / 0.1);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-fantasy {
+    border: 2px solid transparent;
+    background: 
+      linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+      linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-dark))) border-box;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background-size: 200% 100%;
+  }
+
+  .animate-battle-shake {
+    animation: battle-shake 0.5s ease-in-out;
+  }
+
+  .animate-victory {
+    animation: victory 1s ease-out;
+  }
+
+  .animate-defeat {
+    animation: defeat 1s ease-out;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.3), 0 0 40px hsl(var(--gold) / 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 30px hsl(var(--gold) / 0.5), 0 0 60px hsl(var(--gold) / 0.2);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes battle-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes victory {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes defeat {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.95); filter: grayscale(50%); }
+  100% { transform: scale(1); opacity: 0.8; }
+}
