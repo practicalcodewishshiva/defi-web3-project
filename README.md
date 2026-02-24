@@ -95,7 +95,7 @@ http://localhost:8080
 - `backend/` – Node.js backend workspace
 - `APP_STATUS.md` – current app and environment status
 - `AUDIT_REPORT.md` – architecture and production readiness audit
-- `IMPLEMENTATION_REPORT.md` – detailed description of transaction lifecycle improvements
+- `IMPLEMENTATION_REPORT.md` – detailed description of transaction lifecycle improvement
 - `IMPROVEMENT_SUMMARY.md` / `DELIVERY_SUMMARY.md` – summary docs for the client
 
 ## Transaction Lifecycle & Web3 UX
